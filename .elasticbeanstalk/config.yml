@@ -22,7 +22,7 @@ option_settings:
   "aws:elasticbeanstalk:application:environment":
     DJANGO_SETTINGS_MODULE: "real_estate.settings"
   "aws:elasticbeanstalk:container:python":
-    WSGIPath: real_state/real_estate/wsgi.py
+    WSGIPath: real_estate/wsgi.py
     NumProcesses: 3
     NumThreads: 20
   "aws:elasticbeanstalk:container:python:staticfiles":

@@ -34,11 +34,11 @@ jobs:
           echo "[profile eb-cli]" > ~/.aws/config
           echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
           echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
-        - run:
-            name: Deploy to EB if branch is Master
-            command: |
-              eb use real-estate-dev --profile eb-cli
-              eb deploy -v --staged --profile eb-cli
+    - run:
+        name: Deploy to EB if branch is Master
+        command: |
+          eb use real-estate-dev --profile eb-cli
+          eb deploy -v --staged --profile eb-cli
 
     # Download and cache dependencies
     - restore_cache:

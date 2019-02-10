@@ -21,9 +21,10 @@ global:
 option_settings:
   "aws:elasticbeanstalk:application:environment":
     DJANGO_SETTINGS_MODULE: "real_estate.settings"
-  "aws:elasticbeanstalk:container:python":
-    WSGIPath: real_estate/wsgi.py
-    NumProcesses: 3
-    NumThreads: 20
+  aws:elasticbeanstalk:container:python:
+    NumProcesses: '1'
+    NumThreads: '15'
+    StaticFiles: /static/=static/
+    WSGIPath: real_estate/uwsgi.py
   "aws:elasticbeanstalk:container:python:staticfiles":
     "/static/": "www/static/"

@@ -1,0 +1,10 @@
+option_settings:
+  "aws:elasticbeanstalk:application:environment":
+    DJANGO_SETTINGS_MODULE: "real_estate.settings"
+    "PYTHONPATH": "/opt/python/current/app/real_estate:$PYTHONPATH"
+  "aws:elasticbeanstalk:container:python":
+    WSGIPath: real_estate/real_estate/wsgi.py
+    NumProcesses: 3
+    NumThreads: 20
+  "aws:elasticbeanstalk:container:python:staticfiles":
+    "/static/": "www/static/"

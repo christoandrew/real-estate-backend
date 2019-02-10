@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
-      - image: circleci/python:3.6.1
+      - image: circleci/python:2.7
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -19,6 +19,26 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: Install awscli
+          command: |
+            sudo pip install awsebcli --upgrade
+
+      - run:
+          name: Create AWS credentials manually
+          command: |
+            mkdir ~/.aws
+            touch ~/.aws/config
+            chmod 600 ~/.aws/config
+            echo "[profile eb-cli]" > ~/.aws/config
+            echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
+            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+          - run:
+              name: Deploy to EB if branch is Master
+              command: |
+                eb use real-estate-dev --profile eb-cli
+                eb deploy -v --staged --profile eb-cli
 
       # Download and cache dependencies
       - restore_cache:
@@ -67,3 +87,13 @@ jobs:
                 bucket: my-bucket
                 key_pattern: appname-1234-{BRANCH}-{SHORT_COMMIT}
             deployment_group: my-deployment-group
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+                - develop

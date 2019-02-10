@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Deploy to EB if branch is Master
           command: |
-            eb use real-estate-dev --profile eb-cli --region=eu-west-1
+            eb use RealEstateBackend-env  --profile eb-cli --region=eu-west-1
             eb deploy -v --staged --profile eb-cli --region=eu-west-1
  
 workflows:

@@ -1,4 +1,7 @@
 version: 2
+global:
+  default_region: eu-west-1
+  sc: git
 jobs:
   deploy:
     docker:

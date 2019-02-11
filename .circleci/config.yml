@@ -31,6 +31,7 @@ jobs:
       - run:
           name: Deploy to EB if branch is Master
           command: |
+            . venv/bin/activate
             eb use real-estate-dev --profile eb-cli
             eb deploy -v --staged --profile eb-cli
 

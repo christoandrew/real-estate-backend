@@ -13,10 +13,10 @@ jobs:
       - run:
           name: Setup env
           command: |
-            sudo pip install virtualenv
-            virtualenv env
-            source env/bin/activate
-            pip install --user -r requirements.txt
+            mkdir -p ./venv
+            virtualenv ./venv
+            . venv/bin/activate
+            pip install -r requirements.txt
 
       - run:
           name: Install awscli

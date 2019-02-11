@@ -11,11 +11,12 @@ jobs:
       - checkout
 
       - run:
-        name: Set up env
-        command: |
-          sudo pip install virtualenv
-          virtualenv env
-          source env/bin/activate
+          name: Setup env
+          command: |
+            sudo pip install virtualenv
+            virtualenv env
+            source env/bin/activate
+            pip install -r requirements.txt
 
       - run:
           name: Install awscli

@@ -9,10 +9,17 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      -run:
+        name: Set up env
+        command: |
+          sudo pip install virtualenv
+          virtualenv env
+          source env/bin/activate
+
       - run:
           name: Install awscli
           command: |
-            sudo pip install awsebcli --upgrade
+            pip install awsebcli --upgrade
       - run:
           name: Create AWS credentials manually
           command: |

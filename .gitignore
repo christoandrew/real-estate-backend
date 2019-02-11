@@ -23,7 +23,7 @@ local_settings.py
 # Generated files
 .idea/**/contentModel.xml
 
-.venv/
+venv/
 db.sqlite3
 
 # Unit test / coverage reports
@@ -113,3 +113,7 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+# Elastic Beanstalk Files
+#.elasticbeanstalk/*
+#!.elasticbeanstalk/*.cfg.yml
+#!.elasticbeanstalk/*.global.yml
